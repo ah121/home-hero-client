@@ -66,7 +66,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-md sticky top-0 z-50">
+      <div className="navbar bg-emerald-200 shadow-md sticky top-0 z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -109,9 +109,9 @@ const Navbar = () => {
           </div>
 
           <Link to="/" className="flex items-center space-x-2 cursor-pointer">
-            <span className="text-2xl font-extrabold text-gray-800 dark:text-gray-100">
-              Home<span className="text-primary">Hero</span>
-            </span>
+            <figure className="w-20">
+              <img src="./logo.png" alt="" />
+            </figure>
           </Link>
         </div>
 
