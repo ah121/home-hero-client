@@ -12,7 +12,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-300 border-t border-gray-200 dark:border-gray-700">
+    <footer className="bg-emerald-300 border-t border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -21,7 +21,7 @@ const Footer = () => {
                 <img src="./logo.png" alt="" />
               </figure>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-sm text-gray-800 dark:text-gray-400 mb-4">
               Connecting you with trusted local service providers—from expert
               plumbers to professional cleaners—right when you need them.
             </p>

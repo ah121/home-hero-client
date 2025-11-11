@@ -30,21 +30,8 @@ const Login = () => {
       });
 
       navigate(location.state ? location.state : "/");
-    } catch (error) {
-      console.error("Login error:", error);
+    } catch {
       let errorMessage = "An unknown error occurred.";
-      if (error.code === "auth/invalid-email") {
-        errorMessage = "Invalid email address.";
-      } else if (
-        error.code === "auth/user-not-found" ||
-        error.code === "auth/wrong-password" ||
-        error.code === "auth/invalid-credential"
-      ) {
-        errorMessage = "Invalid email or password.";
-      } else if (error.code === "auth/too-many-requests") {
-        errorMessage =
-          "Too many failed login attempts. Please try again later.";
-      }
       Swal.fire({
         icon: "error",
         title: "Login Failed",
@@ -67,8 +54,7 @@ const Login = () => {
       });
 
       navigate(location.state ? location.state : "/");
-    } catch (error) {
-      console.error("Google login error:", error);
+    } catch {
       Swal.fire({
         icon: "error",
         title: "Google Login Failed",
