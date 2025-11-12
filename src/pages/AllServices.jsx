@@ -1,14 +1,39 @@
-import React, { use } from "react";
+import React, { useEffect, useState } from "react";
 import ServiceCard from "../components/ServiceCard";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router";
-const servicePromise = fetch("http://localhost:5000/services").then((res) =>
-  res.json()
-);
+import { Link, useLocation } from "react-router";
+import axios from "axios";
 
 const AllServices = () => {
-  const services = use(servicePromise);
-
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const shouldRefresh = location.state?.refresh;
+  const fetchServices = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("http://localhost:5000/services");
+      setServices(response.data.reverse());
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchServices();
+    if (shouldRefresh) {
+      window.history.replaceState({}, document.title, location.pathname);
+    }
+  }, [shouldRefresh, location.pathname]);
+  if (loading) {
+    return (
+      <div className="py-16 text-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+        <p className="mt-4 text-gray-600">Loading services...</p>
+      </div>
+    );
+  }
   return (
     <div className="py-16">
       {services.length === 0 ? (
@@ -35,7 +60,7 @@ const AllServices = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {services.map((service) => (
-            <ServiceCard key={service._id.$oid} service={service} />
+            <ServiceCard key={service._id} service={service} />
           ))}
         </div>
       )}
