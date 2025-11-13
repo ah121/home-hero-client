@@ -24,10 +24,16 @@ const AuthProvider = ({ children }) => {
   const updateUser = async (updateData) => {
     if (!auth.currentUser) return Promise.reject("No user logged in");
     await updateProfile(auth.currentUser, updateData);
-    setUser((prev) => ({
-      ...prev,
-      ...updateData,
-    }));
+    setUser((prev) => {
+      if (!prev) return null;
+
+      return {
+        ...prev,
+        ...updateData,
+        displayName: updateData.displayName || prev.displayName,
+        photoURL: updateData.photoURL || prev.photoURL || null,
+      };
+    });
   };
   const logOut = () => {
     return signOut(auth);

@@ -62,6 +62,15 @@ const AllServices = () => {
   }
   return (
     <div className="py-16">
+      <div className="text-center mb-12">
+        <h1 className="text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+          Explore All Services 🛠️
+        </h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Discover the perfect service for your needs, from plumbing to tech
+          support.
+        </p>
+      </div>
       <div className="mb-10 p-6  rounded-xl shadow-lg border border-gray-100 max-w-lg mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
           <FaDollarSign className="mr-2" /> Filter By Price Range

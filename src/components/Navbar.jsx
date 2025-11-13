@@ -100,6 +100,16 @@ const Navbar = () => {
               My Bookings
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/my-profile"
+              className={({ isActive }) =>
+                isActive ? "text-primary font-bold" : "font-medium"
+              }
+            >
+              My Profile
+            </NavLink>
+          </li>
         </>
       )}
     </>
@@ -212,7 +222,7 @@ const Navbar = () => {
                   {user.displayName || user.email}
                 </li>
                 <li>
-                  <NavLink to="/profile">Profile</NavLink>
+                  <NavLink to="/my-profile">Profile</NavLink>
                 </li>
                 <li>
                   <button onClick={LogOut}>Logout</button>
