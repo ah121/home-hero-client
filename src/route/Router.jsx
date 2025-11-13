@@ -8,6 +8,8 @@ import ServiceDetails from "../pages/ServiceDetails";
 import PrivateRoute from "../routes/PrivateRoute";
 import MyBookings from "../pages/MyBookings";
 import AddService from "../pages/AddService";
+import MyServices from "../pages/MyServices";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +58,19 @@ const router = createBrowserRouter([
         path: "/add-service",
         Component: AddService,
       },
+      {
+        path: "/my-services",
+        element: (
+          <PrivateRoute>
+            <MyServices></MyServices>
+          </PrivateRoute>
+        ),
+      },
     ],
+  },
+  {
+    path: "*",
+    Component: ErrorPage,
   },
 ]);
 export default router;

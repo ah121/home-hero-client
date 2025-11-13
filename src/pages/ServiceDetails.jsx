@@ -51,7 +51,14 @@ const ServiceDetails = () => {
 
     setIsModalOpen(true);
   };
-
+  const getDisplayPrice = (priceObj) => {
+    if (priceObj && priceObj.$numberInt) {
+      const numericPrice = parseFloat(priceObj.$numberInt);
+      return isNaN(numericPrice) ? "0.00" : numericPrice.toFixed(2);
+    }
+    const numericPrice = parseFloat(priceObj || 0);
+    return isNaN(numericPrice) ? "0.00" : numericPrice.toFixed(2);
+  };
   if (!service) {
     return (
       <div className="container mx-auto p-10 text-center min-h-[80vh]">
@@ -77,7 +84,7 @@ const ServiceDetails = () => {
 
           <div className="flex items-center space-x-6 text-xl mb-6 border-b pb-4">
             <div className="flex items-center text-primary font-bold">
-              <FaDollarSign className="mr-2" /> ${price}
+              <FaDollarSign className="mr-2" /> {getDisplayPrice(price)}
             </div>
             <div className="flex items-center text-accent">
               <FaList className="mr-2" /> {category}

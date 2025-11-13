@@ -7,6 +7,15 @@ const ServiceCard = ({ service }) => {
   const truncateDescription = (text) => {
     return text.length > 100 ? text.substring(0, 100) + "..." : text;
   };
+  const getDisplayPrice = (priceObj) => {
+    if (priceObj && priceObj.$numberInt) {
+      const numericPrice = parseFloat(priceObj.$numberInt);
+      return isNaN(numericPrice) ? "0.00" : numericPrice.toFixed(2);
+    }
+
+    const numericPrice = parseFloat(priceObj || 0);
+    return isNaN(numericPrice) ? "0.00" : numericPrice.toFixed(2);
+  };
   return (
     <div className="card w-full bg-base-100 shadow-xl border border-gray-200 dark:border-gray-700 transition-all hover:shadow-2xl flex flex-col">
       <figure className="h-52 w-full">
@@ -29,10 +38,11 @@ const ServiceCard = ({ service }) => {
 
           <div className="flex items-center space-x-4 text-sm mb-2 border-t pt-3 mt-3">
             <div className="flex items-center text-secondary font-semibold">
-              <FaDollarSign className="mr-1" /> Price: ${price}
+              <FaDollarSign className="mr-1" /> Price: ${getDisplayPrice(price)}
             </div>
             <div className="flex items-center text-gray-500 dark:text-gray-300">
-              <FaUserCircle className="mr-1" /> Provider: {provider.name}
+              <FaUserCircle className="mr-1" />{" "}
+              <span className="font-bold">Provider:</span> {provider.name}
             </div>
           </div>
         </div>
