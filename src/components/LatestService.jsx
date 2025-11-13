@@ -1,8 +1,8 @@
 import React, { use } from "react";
 import ServiceCard from "./ServiceCard";
-const servicePromise = fetch("http://localhost:5000/latest-services").then(
-  (res) => res.json()
-);
+const servicePromise = fetch(
+  "https://home-hero-server-kappa.vercel.app/latest-services"
+).then((res) => res.json());
 const LatestService = () => {
   const services = use(servicePromise);
   return (

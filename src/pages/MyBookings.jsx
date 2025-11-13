@@ -51,7 +51,7 @@ const MyBookings = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/services/${selectedBooking.serviceId}/review`,
+        `https://home-hero-server-kappa.vercel.app/services/${selectedBooking.serviceId}/review`,
         reviewData
       );
 
@@ -86,7 +86,9 @@ const MyBookings = () => {
   const fetchBookings = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/bookings`);
+      const response = await axios.get(
+        `https://home-hero-server-kappa.vercel.app/bookings`
+      );
       const userBookings = response.data.filter(
         (booking) => booking.userEmail === user.email
       );
@@ -121,7 +123,7 @@ const MyBookings = () => {
       if (result.isConfirmed) {
         try {
           const response = await axios.delete(
-            `http://localhost:5000/bookings/${bookingId}`
+            `https://home-hero-server-kappa.vercel.app/bookings/${bookingId}`
           );
 
           if (response.data.success) {

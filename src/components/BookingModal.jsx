@@ -39,7 +39,7 @@ const BookingModal = ({ service, user, isOpen, onClose }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/bookings`,
+        `https://home-hero-server-kappa.vercel.app/bookings`,
         newBooking
       );
 

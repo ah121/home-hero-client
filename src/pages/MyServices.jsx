@@ -40,7 +40,7 @@ const UpdateServiceModal = ({ service, onClose, onUpdateSuccess }) => {
       };
 
       const response = await axios.patch(
-        `http://localhost:5000/services/${service._id}`,
+        `https://home-hero-server-kappa.vercel.app/services/${service._id}`,
         payload
       );
 
@@ -206,7 +206,7 @@ const MyServices = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/services/user/${user.email}`
+        `https://home-hero-server-kappa.vercel.app/services/user/${user.email}`
       );
       setUserServices(response.data);
       setLoading(false);
@@ -243,7 +243,9 @@ const MyServices = () => {
 
   const handleConfirmDelete = async (serviceId, serviceName) => {
     try {
-      await axios.delete(`http://localhost:5000/services/${serviceId}`);
+      await axios.delete(
+        `https://home-hero-server-kappa.vercel.app/services/${serviceId}`
+      );
 
       setUserServices((prev) =>
         prev.filter((service) => service._id !== serviceId)

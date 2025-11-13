@@ -17,7 +17,9 @@ const AllServices = () => {
     setLoading(true);
 
     try {
-      const response = await axios.get("http://localhost:5000/services");
+      const response = await axios.get(
+        "https://home-hero-server-kappa.vercel.app/services"
+      );
       const data = response.data.reverse();
 
       setfilterServices(data);
